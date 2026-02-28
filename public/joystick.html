@@ -139,7 +139,8 @@
     let lastInputStr = '';
 
     function connect() {
-      ws = new WebSocket('ws://' + location.host);
+      const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+      ws = new WebSocket(wsProtocol + '//' + location.host);
       ws.onopen = () => ws.send(JSON.stringify({ type: 'attach', code, player }));
       ws.onmessage = (e) => {
         const msg = JSON.parse(e.data);

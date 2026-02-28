@@ -511,7 +511,7 @@ function startGame(room) {
   }, TICK_MS);
 }
 
-const PORT = 3001; // Different port from SockPong
+const PORT = process.env.PORT || 3001;
 server.listen(PORT, '0.0.0.0', () => {
   const ip = getLocalIP();
   console.log(`\n🎮 SockTank Server Running!`);
